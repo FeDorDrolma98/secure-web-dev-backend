@@ -1,32 +1,16 @@
-# Secure Web Development - Backend
+# Secure Web Development - Website v0
 
-This repo contains an Express app, it will be the backend used for the semester.
+## 👷 Commentaires
 
-## 👷 Prerequisites
+Je n'ai malheureusement pas réussi à connecter le front au back... Après avoir cherché longtemps, j'ai fini par m'appuyer sur un template fournis par SvelteKit, mais même avec cela, le lien n'est pas opérationnel...
+Je voulais garder séparé le front et le back. Le dossier svelte contient donc la partie front. Pour voir le front (incomplet donc), il faut se déplacer dans le dossier svelte (cd svelte au terminal), puis lancer la commande : "npm run dev"
 
-1. Fork this repository then clone it on your computer
-2. Install Insomnia (or your API Testing tool of choice) and import the collection provided in [insomnia-collection.json](insomnia-collection.json)
-3. If you don't have one, create a DB on Mongo Atlas
-4. Create an `.env` file containing (replace with your data):
-   > MONGO_URI=mongodb+srv://USERNAME:PASSWORD@CLUSTER_URL/paris-films?retryWrites=true&w=majority
-   >
-   > JWT_SECRET=your-jwt-secret
-5. Install NodeJS
-6. Install dependencies : `npm install`
-7. If you dont have data in your DB:
-   1. Download the public dataset (OpenData) given by French gov and the city of Paris, named ["Lieux de tournage à Paris"](https://opendata.paris.fr/explore/dataset/lieux-de-tournage-a-paris/information)
-   2. Put the dataset at the root of this repository, named [lieux-de-tournage-a-paris.json](lieux-de-tournage-a-paris.json)
-   3. Run the import script with `npm run import`
-8. Run the backend `npm start`
+Pour faire compiler comme d'habitude la partie back il faut juste lancer le projet (start index.js en fait), et aller sur un visualisateur comme insomnia ou postman. J'ai essayé d'automatiser le lancement du front dans l'index.js initial, mais sans succes. Les lignes concernant ce point sont en commentaires pour ne pas empecher l'application de démarrer.
 
-## Quick information
+## Commande principales
 
-This backend connects to a MongoDB Database containing locations of film sets in Paris, France.
-
-Consulting locations requires an account. Creating, updating and deleting locations requires elevated privileges.
-
-There are 2 access level: `user` and `admin`. Each user have a `role` property to store this data.
-
-Users can authenticate themselves with a Json Web Token, obtained by logging-in with their `username` and `password`.
-
-Passwords are hashed, and the hashes are never shown in API responses.
+J'ai installé plusieurs éléments suplémentaires, j'espère que je n'en ai oublié aucun :
+- npm create svelte@latest svelte pour créer le projet svelte
+- npm install axios
+- npm install vite
+- npm install --save-dev nodemon

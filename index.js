@@ -34,3 +34,12 @@ async function main() {
 }
 
 main();
+const { execSync } = require('child_process');
+
+
+// Essai pour démarer le front automatiquement
+/*
+execSync('cd svelte', { stdio: 'inherit' });
+execSync('npm run build', { stdio: 'inherit' });
+execSync('npx svelte-kit run', { stdio: 'inherit' });
+*/

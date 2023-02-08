@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "import": "node import-data.js"
+    "import": "node import-data.js",
+    "dev": "nodemon index.js",
+    "build": "svelte-kit build"
   },
   "repository": {
     "type": "git",
