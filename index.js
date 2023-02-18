@@ -32,6 +32,8 @@ async function main() {
     console.log(
       `API listening on port ${port}, visit http://localhost:${port}/`
     );
+    //console.log('JWT_SECRET:', process.env.JWT_SECRET);
+
   });
 }
 
