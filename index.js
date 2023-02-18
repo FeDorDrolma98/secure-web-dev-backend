@@ -1,19 +1,19 @@
 require("dotenv").config();
-const express = require("express");
-const locationsController = require("./src/locations/locations.controller");
-const usersController = require("./src/users/users.controller");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 require("./src/authentication/local.strategy");
 require("./src/authentication/jwt.strategy");
+
+const bodyParser = require("body-parser");
+const express = require("express");
+const cors = require("cors"); //Le «  Cross-origin resource sharing » (CORS) ou « partage des ressources entre origines multiples » (en français, moins usité) est un mécanisme qui consiste à ajouter des en-têtes HTTP afin de permettre à un agent utilisateur d'accéder à des ressources d'un serveur situé sur une autre origine que le site courant. Un agent utilisateur réalise une requête HTTP multi-origine (cross-origin) lorsqu'il demande une ressource provenant d'un domaine, d'un protocole ou d'un port différent de ceux utilisés pour la page courante.
+const locationsController = require("./src/locations/locations.controller");
+const mongoose = require("mongoose");
 const passport = require("passport");
-const cors = require("cors");
+const port = 3000;
+const usersController = require("./src/users/users.controller");
 
 const app = express();
-const port = 3000;
-
 app.use(bodyParser.json());
-app.use(cors("*"));
+app.use(cors());
 
 // Protect all /locations route with JWT Authentication
 app.use(
@@ -36,10 +36,8 @@ async function main() {
 }
 
 main();
-const { execSync } = require('child_process');
 
-
-// Essai pour démarer le front automatiquement
+// Essai pour démarer le front automatiquement => en fait faudra deployment pour ca ! sert a rien de m'acharner dessus rn !
 /*
 execSync('cd svelte', { stdio: 'inherit' });
 execSync('npm run build', { stdio: 'inherit' });

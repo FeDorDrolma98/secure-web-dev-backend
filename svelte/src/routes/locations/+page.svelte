@@ -1,41 +1,88 @@
 <script>
-    import axios from 'axios';
-    import {onMount} from "svelte";
+    import { enhance } from '$app/forms';
+    export let data;
+    let locations = data.body
+    import * as api from '$lib/api.js';
 
-    let locations = [];
+    let role = JSON.parse(atob(data.jwt.split('.')[1])).role;
 
-    async function fetchLocations() {
-        try {
-            const response = await axios.get('/locations');
-            locations = response.data;
-        } catch (error) {
-            console.error(error);
-        }
+    async function deleteLocation(id) {
+        let jwt = data.jwt
+        await api.del('locations/'+id, jwt);
+
     }
-
-    onMount(async () => {
-        await fetchLocations();
-    });
 </script>
 
-{#if locations.length === 0}
-    <p>Loading...</p>
-{:else}
-    <ul>
-        {#each locations as location}
-            <li>{location.filmType}</li>
-            <li>{location.filmProducerName}</li>
-            <li>{location.endDate}</li>
-            <li>{location.filmName}</li>
-            <li>{location.district}</li>
-            <li>{location.geolocation}</li>
-            <li>{location.coordinates}</li>
-            <li>{location.type}</li>
-            <li>{location.sourceLocationId}</li>
-            <li>{location.filmDirectorName}</li>
-            <li>{location.address}</li>
-            <li>{location.startDate}</li>
-            <li>{location.year}</li>
-        {/each}
-    </ul>
-{/if}
+<svelte:head>
+    <title>Locations</title>
+</svelte:head>
+
+<body>
+    <h1>Locations in Paris</h1>
+    <h2>Click on a movie to get its details.</h2>
+
+    {#if role=='admin'}
+        <a href="/add" class="button2">Add a Location</a>
+    {/if}
+
+    {#if locations.length === 0}
+        <p>Loading...</p>
+    {:else}
+        <ul class="gradient-list">
+            {#each locations as location}
+                <li class="element">
+                    <!--p class="element-title-behind"><span class="element-span" on:click={() => {location.showDetails = !location.showDetails}}>{location.filmName} - ID : {location._id}</span></p-->
+                    <p class="element-title-front" on:click={() => {location.showDetails = !location.showDetails}}>{location.filmName} - ID : {location._id}</p>
+                    {#if location.showDetails}
+                        {#if role=="admin"}
+                            <form use:enhance method="POST">
+
+                                <label>_id : <input type="text" placeholder="_id" value={location._id} name="_id" readonly/></label>
+                                <label><br>Film Type : <input type="text" placeholder="Film Type" value={location.filmType} name="filmType" required /></label>
+                                <label><br>Film Producer Name :
+                                    <input type="text" placeholder="Film Producer Name" value={location.filmProducerName} name="filmProducerName" required /></label>
+                                <label><br>End Date :
+                                    <input type="text" placeholder="End Date" value={location.endDate} name="endDate" required /></label>
+                                <label><br>Film Name :
+                                    <input type="text" placeholder="Film Name" value={location.filmName} name="filmName" required  /></label>
+                                <label><br>District : <input type="text" placeholder="District" value={location.district} name="district" required /></label>
+                                <label><br>Source Location ID :
+                                    <input type="text" placeholder="Source Location ID" value={location.sourceLocationId} name="sourceLocationId" required /></label>
+                                <label><br>Film Director Name :
+                                    <input type="text" placeholder="Film Director Name" value={location.filmDirectorName} name="filmDirectorName" required /></label>
+                                <label><br>Adress :
+                                    <input type="text" placeholder="Address" value={location.address} name="address" required /></label>
+                                <label><br>Start Date :
+                                    <input type="text" placeholder="Start Date" value={location.startDate} name="startDate" required /></label>
+                                <label><br>Year :
+                                    <input type="text" placeholder="Year" value={location.year} name="year" required /></label>
+                                <label><br>__v :
+                                    <input type="text" placeholder="__v" value={location.__v} name="__v" readonly/></label>
+                                <button type="submit">Save Edit</button>
+                            </form>
+                            <button on:click={deleteLocation(location._id)}>Delete</button>
+                        {/if}
+                        {#if role!="admin"}
+                            <li>ID:     			{location._id}</li>
+                            <li>Film Type:			{location.filmType}</li>
+                            <li>Film Producer Name:	{location.filmProducerName}</li>
+                            <li>End Date:			{location.endDate}</li>
+                            <li>Film Name:			{location.filmName}</li>
+                            <li>District:			{location.district}</li>
+                            <li>Geolocation:		{location.geolocation}</li>
+                            <li>Coordinates:		{location.coordinates}</li>
+                            <li>Type:				{location.type}</li>
+                            <li>Source Location ID:	{location.sourceLocationId}</li>
+                            <li>Film Director Name:	{location.filmDirectorName}</li>
+                            <li>Address:			{location.address}</li>
+                            <li>Start Date:			{location.startDate}</li>
+                            <li>Year:				{location.year}</li>
+                            <li>__v:				{location.__v}</li>
+                        {/if}
+                    {/if}
+                </li>
+            {/each}
+        </ul>
+    {/if}
+
+</body>

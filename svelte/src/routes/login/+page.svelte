@@ -1,47 +1,43 @@
 <script>
-	async function handleSubmit(event) {
-		event.preventDefault();
-		const formData = new FormData(event.target);
-		const username = formData.get("username");
-		const password = formData.get("password");
-		const response = await fetch('http://localhost:3000/users/login', {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({ username, password })
-		});
-		if (response.status === 200) {
-			const { jwt } = await response.json();
-			// Store the JWT token in local storage or a cookie for future use
-			localStorage.setItem("jwt", jwt);
-			// Redirect to the home page or show a success message
-			window.location.href = "/";
-		} else {
-			// Show an error message
-			console.error("Login failed");
-		}
+	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
+
+
+	export let data;
+	$: if (browser && data?.jwt) {
+		goto('/locations');
 	}
 </script>
+
 <svelte:head>
 	<title>Login</title>
 	<meta name="description" content="Login" />
-
 </svelte:head>
 
-<div class="text-column">
-	<h1>Login</h1>
+<body class="login">
+	{#if data.para}
+		<p class="error-message">Incorrect Password</p>
+	{/if}
 
-	<!--form method="POST" action="/login"-->
-	<form on:submit={handleSubmit}>
-	<label>
-			User name
-			<input name="username" type="text">
-		</label>
-		<label>
-			Password
-			<input name="password" type="password">
-		</label>
-		<button>Log in</button>
-	</form>
-</div>
+	<div class="text-column">
+		<h1>Login</h1>
+		<h2>If you don't have an account, go <a href="/register">register</a> first !</h2>
+		<!--form method="POST" action="/login"-->
+		<!--form on:submit={handleSubmit}-->
+		<form method="POST" action="/login">
+			<label>
+				Username
+				<input name="username" type="text" required>
+			</label>
+			<label>
+				Password
+				<input name="password" type="password" required>
+			</label>
+			<div class="action">
+				<button type="submit">Log in</button>
+				<button on:click={() => window.location.href='/register'}>Register</button>
+			</div>
+		</form>
+	</div>
+
+</body>

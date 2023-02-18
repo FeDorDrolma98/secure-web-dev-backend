@@ -7,23 +7,20 @@
 	</div>
 
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
 		<ul>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/login' ? 'page' : undefined}>
-				<a href="/login">Sign in</a>
-			</li>
 			<li aria-current={$page.url.pathname === '/locations' ? 'page' : undefined}>
 				<a href="/locations">Locations</a>
 			</li>
+			<li aria-current={$page.url.pathname === '/register' ? 'page' : undefined}>
+				<a href="/register">Register</a>
+			</li>
+			<li aria-current={$page.url.pathname === '/logout' ? 'page' : undefined}>
+				<a href="/logout">Log out</a>
+			</li>
 		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
 	</nav>
 
 	<div class="corner">
@@ -41,34 +38,10 @@
 		height: 3em;
 	}
 
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
 	nav {
 		display: flex;
 		justify-content: center;
 		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
 	}
 
 	ul {
@@ -82,6 +55,7 @@
 		list-style: none;
 		background: var(--background);
 		background-size: contain;
+		border-radius:10px;
 	}
 
 	li {
@@ -105,10 +79,10 @@
 		display: flex;
 		height: 100%;
 		align-items: center;
-		padding: 0 0.5rem;
+		padding: 0 4rem;
 		color: var(--color-text);
 		font-weight: 700;
-		font-size: 0.8rem;
+		font-size: 1rem;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
 		text-decoration: none;
