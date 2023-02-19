@@ -32,7 +32,7 @@ so that I can edit existing locations => OK
 - US6: As an “admin" user, I want to see a button to delete locations in the array of
   locations so that I can delete existing locations => OK
 
-## Structure du code
+## Le code
 ### Démarche
 J'ai eu quelques difficultés à saisir comment le back et le front allaient être connectés et communiquer ensemble. Je me suis beaucoup appuyé sur un template de SvelteKit pour saisir le fonctionnement.
 
@@ -62,3 +62,6 @@ J'espère que je n'en ai oublié aucun :
 - npm install flyctl
 - npm install passport-jwt    
 - npm install yarn
+
+# Le déploiement
+Pour le déploiement, j'ai utilisé Render pour le back et Netlify pour le front. Pour lier les deux, j'ai mis le lien généré par le déploiement du back-end à la place de l'URL localhost. Ainsi, en déclenchant le front-end, je déclenche le back-end en réalité. Pour que les mises à jours s'effectuent seules, je n'ai rien eu à faire, cela fonctionnait automatiquement.
