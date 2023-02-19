@@ -13,7 +13,7 @@
     {#if data.para}
         <p class="location-added">Done !</p>
     {/if}
-    <id class="afficher">
+    <div class="afficher">
         <form use:enhance method="POST">
             <label><br>Film Type : <input type="text" placeholder="Film Type" value="Long métrage" name="filmType" required /></label>
             <label><br>Film Producer Name :
@@ -35,7 +35,7 @@
                 <input type="text" placeholder="Year"  value="2020" name="year" required /></label><br>
             <button type="submit">Add the location</button>
         </form>
-    </id>
+    </div>
 
 
 </body>

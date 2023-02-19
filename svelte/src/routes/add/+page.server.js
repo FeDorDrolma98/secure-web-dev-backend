@@ -10,15 +10,14 @@ export async function load({ locals,url }) {
     }
     let role = JSON.parse(atob(jwt.split('.')[1])).role;
 
-    //On verifie le role de l'user
     if(role!='admin'){
         throw redirect(307, '/locations');
     }
     let para = url.searchParams.get('success')
     return {para}
-};
+}
 
-/** @type {import('./$types').Actions} */
+
 export const actions = {
     default: async ({request,locals }) => {
 

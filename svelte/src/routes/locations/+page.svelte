@@ -32,7 +32,6 @@
         <ul class="gradient-list">
             {#each locations as location}
                 <li class="element">
-                    <!--p class="element-title-behind"><span class="element-span" on:click={() => {location.showDetails = !location.showDetails}}>{location.filmName} - ID : {location._id}</span></p-->
                     <p class="element-title-front" on:click={() => {location.showDetails = !location.showDetails}}>{location.filmName} - ID : {location._id}</p>
                     {#if location.showDetails}
                         {#if role=="admin"}

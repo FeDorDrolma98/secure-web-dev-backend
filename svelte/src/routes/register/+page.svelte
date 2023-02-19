@@ -7,7 +7,7 @@
     <title>Register</title>
 </svelte:head>
 
-<body><!-- on observe que svelte: body c'est une mauvaise idee ca marche pas du tout ! (cannot have children)-->
+<body>
     <h1>Register</h1>
     <form use:enhance method="POST">
         <div class="content">
