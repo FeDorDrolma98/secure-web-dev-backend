@@ -9,7 +9,7 @@ const locationsController = require("./src/locations/locations.controller");
 const mongoose = require("mongoose");
 mongoose.set('strictQuery', true);// pour permettre deployment?
 const passport = require("passport");
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const usersController = require("./src/users/users.controller");
 
 const app = express();

@@ -1,0 +1,40 @@
+import { r as redirect, f as fail } from "../../../chunks/index.js";
+import { p as post } from "../../../chunks/api.js";
+async function load({ locals, url }) {
+  let jwt = locals.jwt;
+  if (jwt == null) {
+    throw redirect(307, "/login");
+  }
+  let role = JSON.parse(atob(jwt.split(".")[1])).role;
+  if (role != "admin") {
+    throw redirect(307, "/locations");
+  }
+  let para = url.searchParams.get("success");
+  return { para };
+}
+const actions = {
+  default: async ({ request, locals }) => {
+    const data = await request.formData();
+    const user = {
+      filmType: data.get("filmType"),
+      filmProducerName: data.get("filmProducerName"),
+      endDate: data.get("endDate"),
+      filmName: data.get("filmName"),
+      district: data.get("district"),
+      sourceLocationId: data.get("sourceLocationId"),
+      filmDirectorName: data.get("filmDirectorName"),
+      address: data.get("address"),
+      startDate: data.get("startDate"),
+      year: data.get("year")
+    };
+    const body = await post("locations/", user, locals.jwt);
+    if (body.errors) {
+      return fail(401, body);
+    }
+    throw redirect(307, "/add?success=true");
+  }
+};
+export {
+  actions,
+  load
+};

@@ -1,6 +1,7 @@
 import {error, redirect} from '@sveltejs/kit';
 
-export const base = 'http://localhost:3000';
+//export const base = 'http://localhost:3000';
+export const base = 'https://webapploc.onrender.com';
 
 // @ts-ignore
 async function send({ method, path, data, token }) {
