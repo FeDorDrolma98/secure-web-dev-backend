@@ -1,5 +1,4 @@
 <script>
-	import { goto } from '$app/navigation';
 </script>
 
 <svelte:head>
@@ -9,7 +8,7 @@
 
 <section>
 	<h1>
-		Welcome on this experimental website
+		Welcome on this experimental website !!!
 	</h1>
 </section>
 
