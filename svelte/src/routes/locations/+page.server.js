@@ -1,19 +1,14 @@
-// @ts-ignore
 import { redirect, fail } from '@sveltejs/kit';
 import * as api from '$lib/api.js';
 
 
-/** @type {import('./$types').PageServerLoad} */
-// @ts-ignore
 export async function load({ locals, request, response }) {
     let jwt = locals.jwt;
     let body = await api.get('locations', jwt);
     return { body, jwt };
 }
 
-/** @type {import('./$types').Actions} */
 export const actions = {
-    // @ts-ignore
     default: async ({ request, locals }) => {
         const data = await request.formData();
 

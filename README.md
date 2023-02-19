@@ -11,6 +11,7 @@ Ce site a :
 - Une page de location
   - Si l'on clique sur locations sans s'être connecté auparavant, on est redirigé vers la page de login
   - Dans la page location; il est possible d'ouvrir une page de creation de location si l'utilisateur est un administrateur
+  - Malheureusement, je n'ai pas fait la liste des localisations de manière paginée comme demandé
 - Une page register
   - La page register permet de se créer un compte si on n'en a pas
 

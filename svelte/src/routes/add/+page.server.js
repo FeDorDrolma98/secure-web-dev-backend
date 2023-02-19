@@ -1,9 +1,7 @@
-
 import { redirect, fail } from '@sveltejs/kit';
 import * as api from '$lib/api.js';
 
 
-/** @type {import('./$types').PageServerLoad} */
 export async function load({ locals,url }) {
     let jwt = locals.jwt
     if(jwt==null)
@@ -45,8 +43,6 @@ export const actions = {
             return fail(401, body);
         }
         throw redirect(307, '/add?success=true');
-
-
     }
 };
 

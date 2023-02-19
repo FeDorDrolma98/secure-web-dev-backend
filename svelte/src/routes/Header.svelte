@@ -41,14 +41,14 @@
 	nav {
 		display: flex;
 		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
+		--background: rgb(48, 30, 103);
 	}
 
 	ul {
 		position: relative;
 		padding: 0;
 		margin: 0;
-		height: 3em;
+		height: 4em;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -64,7 +64,7 @@
 	}
 
 	li[aria-current='page']::before {
-		--size: 6px;
+		--size: 10px;
 		content: '';
 		width: 0;
 		height: 0;

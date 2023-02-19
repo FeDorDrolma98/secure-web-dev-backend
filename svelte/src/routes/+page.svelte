@@ -8,7 +8,7 @@
 
 <section>
 	<h1>
-		Welcome on this experimental website !!!
+		Welcome on this website !!!
 	</h1>
 </section>
 

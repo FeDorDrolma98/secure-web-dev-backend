@@ -16,28 +16,55 @@
 
 <body class="login">
 	{#if data.para}
-		<p class="error-message">Incorrect Password</p>
+		<p class="error-message">Incorrect password !</p>
 	{/if}
 
 	<div class="text-column">
 		<h1>Login</h1>
-		<h2>If you don't have an account, go <a href="/register">register</a> first !</h2>
-		<!--form method="POST" action="/login"-->
-		<!--form on:submit={handleSubmit}-->
+		<h2>If you don't have a account yet, you have to create one <a href="/register">first</a> !</h2>
 		<form method="POST" action="/login">
-			<label>
-				Username
-				<input name="username" type="text" required>
-			</label>
-			<label>
-				Password
-				<input name="password" type="password" required>
-			</label>
-			<div class="action">
-				<button type="submit">Log in</button>
-				<button on:click={() => window.location.href='/register'}>Register</button>
+			<div class="input">
+				<div class="input-field">
+					<input name="username" type="text" required placeholder="Username"/>
+				</div>
+				<div class="input-field">
+					<input name="password" type="password" required placeholder="Password"/>
+				</div>
+			</div>
+			<div class="bttn">
+				<div class="action">
+					<button type="submit">Login</button>
+				</div>
 			</div>
 		</form>
 	</div>
 
 </body>
+
+
+
+<style>
+	.input-field{
+		position: center;
+		display: flex;
+		justify-content: left;
+		padding: 1px;
+	}
+	.action{
+		position: center;
+		display: flex;
+		justify-content: left;
+	}
+	button{
+		padding: 4px 8px;
+	}
+	.input{
+		padding:15px 15px;
+	}
+	.bttn{
+		padding-top: 15px;
+		padding-left: 30px;
+	}
+</style>
+
+

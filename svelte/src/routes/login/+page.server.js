@@ -1,8 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import * as api from '$lib/api.js';
 
-/** @type {import('./$types').PageServerLoad} */
-// @ts-ignore
 export async function load({ parent, url }) {
     // @ts-ignore
     const { user } = await parent();
@@ -11,7 +9,7 @@ export async function load({ parent, url }) {
     return { para };
 }
 
-/** @type {import('./$types').Actions} */
+
 export const actions = {
     // @ts-ignore
     default: async ({ cookies, request,locals}) => {
