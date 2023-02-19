@@ -1,7 +1,7 @@
 export const manifest = {
 	appDir: "_app",
 	appPath: "_app",
-	assets: new Set(["favicon.png","robots.txt"]),
+	assets: new Set(["logo.png","robots.txt"]),
 	mimeTypes: {".png":"image/png",".txt":"text/plain"},
 	_: {
 		entry: {"file":"_app/immutable/start-2f9e8882.js","imports":["_app/immutable/start-2f9e8882.js","_app/immutable/chunks/index-103765ec.js","_app/immutable/chunks/singletons-40e1893b.js","_app/immutable/chunks/control-e7f5239e.js","_app/immutable/chunks/parse-b67c4dc9.js"],"stylesheets":[],"fonts":[]},
