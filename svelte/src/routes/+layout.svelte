@@ -11,7 +11,7 @@
 	</main>
 
 	<footer>
-		<p>Done by <a href="https://github.com/FeDorDrolma98">Felicity</a> and <a href="https://github.com/sveltejs/realworld">SvelteKit</a> in the course <a href="https://github.com/RochMoreau/secure-web-dev-workshop1">Web application</a></p>
+		<p>Done by <a href="https://github.com/FeDorDrolma98">Felicity</a>, helped by <a href="https://github.com/cowbra">Bob</a> and <a href="https://github.com/sveltejs/realworld">SvelteKit</a>, in the course <a href="https://github.com/RochMoreau/secure-web-dev-workshop1">Web application</a></p>
 	</footer>
 </div>
 
